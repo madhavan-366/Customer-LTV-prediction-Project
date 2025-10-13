@@ -1,7 +1,11 @@
+# Specify the Python version
+python = "3.11"
+
+# List the libraries
 streamlit
 pandas
-scikit-learn==1.3.2
-xgboost==1.7.6
+scikit-learn
+xgboost
 joblib
 plotly
 setuptools
