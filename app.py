@@ -27,7 +27,7 @@ model = load_model()
 @st.cache_data
 def perform_feature_engineering(df):
     """Takes a raw transaction DataFrame and returns a customer-centric RFM DataFrame."""
-    # --- Suggestion 3: Robust Data Validation ---
+    # Robust Data Validation
     df.dropna(subset=['CustomerID'], inplace=True)
     df = df[df['Quantity'] > 0]
     df = df[df['UnitPrice'] > 0]
@@ -76,10 +76,10 @@ with tab1:
     with col2:
         frequency = st.number_input('Frequency (Transactions)', min_value=1, max_value=1000, value=5, step=1)
     with col3:
-        monetary_value = st.number_input('Monetary Value (Total Spend $)', min_value=1, max_value=200000, value=1500, step=10)
+        monetary_value = st.number_input('Monetary Value (Total Spend ₹)', min_value=1, max_value=200000, value=1500, step=10) # Changed $ to ₹
     
     aov = monetary_value / frequency if frequency > 0 else 0
-    st.metric(label="Calculated Average Order Value (AOV)", value=f"${aov:,.2f}")
+    st.metric(label="Calculated Average Order Value (AOV)", value=f"₹{aov:,.2f}") # Changed $ to ₹
 
     if model is not None and st.button('Predict LTV', type="primary", use_container_width=True, key='single_predict'):
         input_data = pd.DataFrame({
@@ -92,7 +92,7 @@ with tab1:
         st.subheader("✨ Prediction Results")
         res_col1, res_col2 = st.columns(2)
         with res_col1:
-            st.metric(label="Predicted 3-Month LTV", value=f"${prediction[0]:,.2f}")
+            st.metric(label="Predicted 3-Month LTV", value=f"₹{prediction[0]:,.2f}") # Changed $ to ₹
         with res_col2:
             st.write("Customer Segment")
             if segment == 'High Value':
@@ -145,14 +145,14 @@ with tab2:
                         
                         st.subheader("📊 Results Dashboard")
                         
-                        # --- Suggestion 2: KPIs ---
+                        # KPIs
                         kpi1, kpi2, kpi3 = st.columns(3)
                         kpi1.metric("Total Customers Processed", len(rfm_results))
-                        kpi2.metric("Average Predicted LTV", f"${rfm_results['Predicted_LTV'].mean():,.2f}")
+                        kpi2.metric("Average Predicted LTV", f"₹{rfm_results['Predicted_LTV'].mean():,.2f}") # Changed $ to ₹
                         high_value_count = rfm_results[rfm_results['Segment'] == 'High Value'].shape[0]
                         kpi3.metric("High-Value Customers", high_value_count)
                         
-                        # --- Visualizations ---
+                        # Visualizations
                         viz_col1, viz_col2 = st.columns(2)
                         with viz_col1:
                             fig_pie = px.pie(rfm_results, names='Segment', title='Customer Segmentation Distribution',
