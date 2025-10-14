@@ -37,6 +37,12 @@ The entire pipeline â€” from **data cleaning to prediction and visualization** â
 - **Batch Prediction:**  
   Upload a raw transaction CSV to generate LTV predictions for thousands of customers.
 
+- **Intelligent Currency Conversion:**
+  The app automatically detects the country for each transaction and applies an economic adjustment factor, converting all prices to a common baseline (GBP) before prediction. This ensures the model's accuracy regardless of the data's origin.
+
+- **Transparent Data Validation:**
+  When a file is uploaded, the app provides a full summary of the data quality, showing exactly which rows were excluded and why (e.g., "Missing CustomerID," "Non-positive Quantity"). This builds trust and provides clarity to the user.
+  
 - **Automated Feature Engineering:**  
   The app automatically computes Recency, Frequency, Monetary Value, and Average Order Value (AOV).
 
@@ -45,6 +51,9 @@ The entire pipeline â€” from **data cleaning to prediction and visualization** â
 
 - **Color-Coded Results:**  
   Green (High), Orange (Mid), and Red (Low) for immediate clarity.
+
+- **Dynamic Local Currency Display:**
+  The final results table shows not only the official prediction in GBP but also intelligently converts it back to each customer's original local currency.
 
 - **Data Export:**  
   Download predictions and customer segments as a CSV file for further business use.
