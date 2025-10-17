@@ -98,8 +98,8 @@ The entire pipeline â€” from **data cleaning to prediction and visualization** â
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/LTV-Project.git
-   cd LTV-Project
+   git clone https://github.com/madhavan-366/Customer-LTV-prediction-Project.git
+   cd Customer-LTV-prediction-Project
    
 2. **Create and activate a virtual environment (recommended):**
    ```bash
